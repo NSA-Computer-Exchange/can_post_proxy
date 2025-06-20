@@ -34,4 +34,4 @@ def find_address():
     return Response(res.content, content_type='application/xml', status=res.status_code)
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=4567)
+    app.run(debug=True)
