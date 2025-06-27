@@ -35,7 +35,7 @@ RETRIEVE_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
   </soap12:Body>
 </soap12:Envelope>"""
 
-CORS(app, origins=["https://sxe12.inforcloudsuite.com"])
+CORS(app, supports_credentials=True, origins=["https://sxe12.inforcloudsuite.com"])
 
 
 @app.route('/proxy', methods=['POST'])
