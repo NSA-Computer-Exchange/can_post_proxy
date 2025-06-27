@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import requests
 import xml.etree.ElementTree as ET
 
@@ -33,6 +34,9 @@ RETRIEVE_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
     </Retrieve>
   </soap12:Body>
 </soap12:Envelope>"""
+
+CORS(app, origins=["https://sxe12.inforcloudsuite.com"])
+
 
 @app.route('/proxy', methods=['POST'])
 def proxy_infor_request():
