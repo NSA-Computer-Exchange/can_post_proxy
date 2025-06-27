@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, Response
 from flask_cors import CORS
 import requests
 import xml.etree.ElementTree as ET
@@ -36,6 +36,34 @@ RETRIEVE_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
 </soap12:Envelope>"""
 
 CORS(app, supports_credentials=True, origins=["https://sxe12.inforcloudsuite.com"])
+
+
+@app.route('/AddressComplete/Interactive/Find/v2.10/soap12.wsdl')
+def serve_wsdl():
+    return send_from_directory('static/wsdl', 'addresscomplete.wsdl', mimetype='text/xml')
+
+@app.route('/AddressComplete/Interactive/Find/v2.10/soap12', methods=['POST'])
+def handle_soap():
+    # You can inspect request.data and build a matching SOAP XML response
+    response_xml = '''<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <Response xmlns="http://schemas.postcodeanywhere.com/">
+      <Result>
+        <Results>
+          <Id>CA|CP|A|16236336</Id>
+          <Text>97 Rue Champlain</Text>
+          <Highlight>0-2,3-16</Highlight>
+          <Cursor>0</Cursor>
+          <Description>Les Cèdres, QC, J7T 0C6</Description>
+          <Next>Retrieve</Next>
+        </Results>
+      </Result>
+    </Response>
+  </soap:Body>
+</soap:Envelope>'''
+    return Response(response_xml, mimetype='application/soap+xml')
+
 
 
 @app.route('/proxy', methods=['POST'])
