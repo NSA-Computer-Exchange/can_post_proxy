@@ -34,7 +34,7 @@ RETRIEVE_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
   </soap12:Body>
 </soap12:Envelope>"""
 
-@app.route('/addresscomplete/interactive/find/v2.10/', methods=['POST'])
+@app.route('/proxy', methods=['POST'])
 def proxy_infor_request():
     payload = request.get_json()
     if not payload or 'ttbladdrverifycriteria' not in payload:
