@@ -9,11 +9,14 @@
              targetNamespace="http://schemas.postcodeanywhere.com/"
              name="AddressComplete">
 
-  <types>
-    <xsd:schema targetNamespace="http://schemas.postcodeanywhere.com/">
-      <!-- You can define your schema here if needed -->
-    </xsd:schema>
-  </types>
+<types>
+  <xsd:schema targetNamespace="http://schemas.postcodeanywhere.com/">
+    <xsd:element name="Find" type="xsd:anyType"/>
+    <xsd:element name="FindResponse" type="xsd:anyType"/>
+    <xsd:element name="Retrieve" type="xsd:anyType"/>
+    <xsd:element name="RetrieveResponse" type="xsd:anyType"/>
+  </xsd:schema>
+</types>
 
   <message name="FindRequest">
     <part name="parameters" element="tns:Find"/>
