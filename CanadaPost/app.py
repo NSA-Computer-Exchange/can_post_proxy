@@ -38,6 +38,13 @@ RETRIEVE_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
 CORS(app, supports_credentials=True, origins=["https://sxe12.inforcloudsuite.com"])
 
 
+@app.route('/AddressComplete/Interactive/Find/v2.10/soap12.ws', methods=['GET'])
+def serve_wsdl():
+    with open('static/wsdl/AddressComplete.wsdl', 'r') as f:
+        wsdl_content = f.read()
+    return Response(wsdl_content, mimetype='text/xml')
+
+
 @app.route('/AddressComplete/Interactive/Find/v2.10/soap12.ws')
 def serve_wsdl():
     return send_from_directory('static/wsdl', 'addresscomplete.wsdl', mimetype='text/xml')
