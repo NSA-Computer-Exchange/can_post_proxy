@@ -20,7 +20,16 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="FindResponse" type="xsd:anyType"/>
+
+      <xsd:element name="FindResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Id" type="xsd:string"/>
+            <xsd:element name="Text" type="xsd:string"/>
+            <xsd:element name="Description" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
 
       <xsd:element name="Retrieve">
         <xsd:complexType>
@@ -30,7 +39,19 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="RetrieveResponse" type="xsd:anyType"/>
+
+      <xsd:element name="RetrieveResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Line1" type="xsd:string"/>
+            <xsd:element name="City" type="xsd:string"/>
+            <xsd:element name="Province" type="xsd:string"/>
+            <xsd:element name="PostalCode" type="xsd:string"/>
+            <xsd:element name="CountryName" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
     </xsd:schema>
   </wsdl:types>
 
