@@ -64,6 +64,27 @@ def handle_soap():
 </soap:Envelope>'''
     return Response(response_xml, mimetype='application/soap+xml')
 
+@app.route('/AddressComplete/Interactive/Retrieve/v2.10/soap12', methods=['POST'])
+def handle_retrieve():
+    response_xml = '''<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <Response xmlns="http://schemas.postcodeanywhere.com/">
+      <Result>
+        <Company>Canada Post</Company>
+        <Line1>97 Rue Champlain</Line1>
+        <Line2></Line2>
+        <Line3></Line3>
+        <City>Les Cèdres</City>
+        <Province>QC</Province>
+        <PostalCode>J7T 0C6</PostalCode>
+        <CountryName>Canada</CountryName>
+        <Type>Residential</Type>
+      </Result>
+    </Response>
+  </soap:Body>
+</soap:Envelope>'''
+    return Response(response_xml, mimetype='application/soap+xml')
 
 
 @app.route('/proxy', methods=['POST'])
