@@ -13,7 +13,7 @@ FIND_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Body>
-    <Find xmlns="http://ws1.postescanada-canadapost.ca/AddressComplete/Interactive/Find/v2.10">
+    <Find xmlns="http://ws1.postescanada-canadapost.ca/addresscomplete/interactive/find/v2.10">
       <Key>{key}</Key>
       <SearchTerm>{term}</SearchTerm>
       <LanguagePreference>en</LanguagePreference>
@@ -28,7 +28,7 @@ RETRIEVE_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Body>
-    <Retrieve xmlns="http://ws1.postescanada-canadapost.ca/AddressComplete/Interactive/Retrieve/v2.11">
+    <Retrieve xmlns="http://ws1.postescanada-canadapost.ca/addresscomplete/interactive/retrieve/v2.11">
       <Key>{key}</Key>
       <Id>{id}</Id>
     </Retrieve>
@@ -38,7 +38,7 @@ RETRIEVE_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
 CORS(app, supports_credentials=True, origins=["https://sxe12.inforcloudsuite.com"])
 
 
-@app.route('/AddressComplete/Interactive/Find/v2.10/soap12.ws', methods=['GET'])
+@app.route('/addresscomplete/interactive/find/v2.10/soap12.ws', methods=['GET'])
 def serve_wsdl():
     with open('static/wsdl/AddressComplete.wsdl', 'r') as f:
         wsdl_content = f.read()
@@ -49,7 +49,7 @@ def serve_wsdl():
 # def serve_wsdl():
 #     return send_from_directory('static/wsdl', 'addresscomplete.wsdl', mimetype='text/xml')
 
-@app.route('/AddressComplete/Interactive/Find/v2.10/soap12', methods=['POST'])
+@app.route('/addresscomplete/interactive/find/v2.10/soap12', methods=['POST'])
 def handle_soap():
     # You can inspect request.data and build a matching SOAP XML response
     response_xml = '''<?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ def handle_soap():
 </soap:Envelope>'''
     return Response(response_xml, mimetype='application/soap+xml')
 
-@app.route('/AddressComplete/Interactive/Retrieve/v2.10/soap12', methods=['POST'])
+@app.route('/addresscomplete/interactive/retrieve/v2.10/soap12', methods=['POST'])
 def handle_retrieve():
     response_xml = '''<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
