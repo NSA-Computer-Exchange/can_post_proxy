@@ -67,7 +67,7 @@
 
   <service name="AddressComplete">
     <port name="AddressCompleteSoap" binding="tns:AddressCompleteSoapBinding">
-      <soap:address location="https://can-post-proxy.onrender.com/AddressComplete/Interactive/Find/v2.10/soap12"/>
+      <soap:address location="https://can-post-proxy.onrender.com/addresscomplete/interactive/find/v2.10/soap12"/>
     </port>
   </service>
 
