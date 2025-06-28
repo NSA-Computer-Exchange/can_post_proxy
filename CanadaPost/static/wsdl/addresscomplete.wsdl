@@ -1,1 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://schemas.postcodeanywhere.com/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://schemas.postcodeanywhere.com/"
+             name="AddressComplete">
+
+  <types>
+    <xsd:schema targetNamespace="http://schemas.postcodeanywhere.com/">
+      <!-- You can define your schema here if needed -->
+    </xsd:schema>
+  </types>
+
+  <message name="FindRequest">
+    <part name="parameters" element="tns:Find"/>
+  </message>
+
+  <message name="FindResponse">
+    <part name="parameters" element="tns:FindResponse"/>
+  </message>
+
+  <portType name="AddressCompleteSoap">
+    <operation name="Find">
+      <input message="tns:FindRequest"/>
+      <output message="tns:FindResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="AddressCompleteSoapBinding" type="tns:AddressCompleteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="Find">
+      <soap:operation soapAction="http://schemas.postcodeanywhere.com/Find"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="AddressComplete">
+    <port name="AddressCompleteSoap" binding="tns:AddressCompleteSoapBinding">
+      <soap:address location="https://can-post-proxy.onrender.com/AddressComplete/Interactive/Find/v2.10/soap12"/>
+    </port>
+  </service>
+
+</definitions>
 
