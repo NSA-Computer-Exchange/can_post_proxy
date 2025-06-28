@@ -50,48 +50,36 @@ def serve_wsdl():
 #     return send_from_directory('static/wsdl', 'addresscomplete.wsdl', mimetype='text/xml')
 
 @app.route('/addresscomplete/interactive/find/v2.10/soap12', methods=['POST'])
-def handle_soap():
-    # You can inspect request.data and build a matching SOAP XML response
+def handle_find():
     response_xml = '''<?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-  <soap:Body>
-    <Response xmlns="http://schemas.postcodeanywhere.com/">
-      <Result>
-        <Results>
-          <Id>CA|CP|A|16236336</Id>
-          <Text>97 Rue Champlain</Text>
-          <Highlight>0-2,3-16</Highlight>
-          <Cursor>0</Cursor>
-          <Description>Les Cèdres, QC, J7T 0C6</Description>
-          <Next>Retrieve</Next>
-        </Results>
-      </Result>
-    </Response>
-  </soap:Body>
-</soap:Envelope>'''
+<soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <soap12:Body>
+    <FindResponse xmlns="http://schemas.postcodeanywhere.com/">
+      <Id>CA|CP|A|16236336</Id>
+      <Text>97 Rue Champlain</Text>
+      <Description>Les Cèdres, QC, J7T 0C6</Description>
+    </FindResponse>
+  </soap12:Body>
+</soap12:Envelope>'''
     return Response(response_xml, mimetype='application/soap+xml')
+
 
 @app.route('/addresscomplete/interactive/retrieve/v2.10/soap12', methods=['POST'])
 def handle_retrieve():
     response_xml = '''<?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-  <soap:Body>
-    <Response xmlns="http://schemas.postcodeanywhere.com/">
-      <Result>
-        <Company>Canada Post</Company>
-        <Line1>97 Rue Champlain</Line1>
-        <Line2></Line2>
-        <Line3></Line3>
-        <City>Les Cèdres</City>
-        <Province>QC</Province>
-        <PostalCode>J7T 0C6</PostalCode>
-        <CountryName>Canada</CountryName>
-        <Type>Residential</Type>
-      </Result>
-    </Response>
-  </soap:Body>
-</soap:Envelope>'''
+<soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <soap12:Body>
+    <RetrieveResponse xmlns="http://schemas.postcodeanywhere.com/">
+      <Line1>97 Rue Champlain</Line1>
+      <City>Les Cèdres</City>
+      <Province>QC</Province>
+      <PostalCode>J7T 0C6</PostalCode>
+      <CountryName>Canada</CountryName>
+    </RetrieveResponse>
+  </soap12:Body>
+</soap12:Envelope>'''
     return Response(response_xml, mimetype='application/soap+xml')
+
 
 
 @app.route('/proxy', methods=['POST'])
