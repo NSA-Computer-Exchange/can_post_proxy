@@ -40,7 +40,7 @@ CORS(app, supports_credentials=True, origins=["https://sxe12.inforcloudsuite.com
 
 @app.route('/AddressComplete/Interactive/Find/v2.10/soap12.ws', methods=['GET'])
 def serve_wsdl():
-    with open('static/wsdl/AddressComplete.wsdl', 'r') as f:
+    with open('wsdl/AddressComplete.wsdl', 'r') as f:
         wsdl_content = f.read()
     return Response(wsdl_content, mimetype='text/xml')
 
