@@ -45,9 +45,9 @@ def serve_wsdl():
     return Response(wsdl_content, mimetype='text/xml')
 
 
-@app.route('/AddressComplete/Interactive/Find/v2.10/soap12.ws')
-def serve_wsdl():
-    return send_from_directory('static/wsdl', 'addresscomplete.wsdl', mimetype='text/xml')
+# @app.route('/AddressComplete/Interactive/Find/v2.10/soap12.ws')
+# def serve_wsdl():
+#     return send_from_directory('static/wsdl', 'addresscomplete.wsdl', mimetype='text/xml')
 
 @app.route('/AddressComplete/Interactive/Find/v2.10/soap12', methods=['POST'])
 def handle_soap():
