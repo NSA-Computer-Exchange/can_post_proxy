@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-             xmlns:tns="http://schemas.postcodeanywhere.com/"
-             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-             targetNamespace="http://schemas.postcodeanywhere.com/"
-             name="AddressComplete">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:tns="http://schemas.postcodeanywhere.com/"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                 xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                 xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                 targetNamespace="http://schemas.postcodeanywhere.com/"
+                 name="AddressComplete">
 
-  <types>
+  <wsdl:types>
     <xsd:schema targetNamespace="http://schemas.postcodeanywhere.com/">
       <xsd:element name="Find">
         <xsd:complexType>
@@ -32,61 +32,61 @@
       </xsd:element>
       <xsd:element name="RetrieveResponse" type="xsd:anyType"/>
     </xsd:schema>
-  </types>
+  </wsdl:types>
 
-  <message name="FindRequest">
-    <part name="parameters" element="tns:Find"/>
-  </message>
+  <wsdl:message name="FindRequest">
+    <wsdl:part name="parameters" element="tns:Find"/>
+  </wsdl:message>
 
-  <message name="FindResponse">
-    <part name="parameters" element="tns:FindResponse"/>
-  </message>
+  <wsdl:message name="FindResponse">
+    <wsdl:part name="parameters" element="tns:FindResponse"/>
+  </wsdl:message>
 
-  <message name="RetrieveRequest">
-    <part name="parameters" element="tns:Retrieve"/>
-  </message>
+  <wsdl:message name="RetrieveRequest">
+    <wsdl:part name="parameters" element="tns:Retrieve"/>
+  </wsdl:message>
 
-  <message name="RetrieveResponse">
-    <part name="parameters" element="tns:RetrieveResponse"/>
-  </message>
+  <wsdl:message name="RetrieveResponse">
+    <wsdl:part name="parameters" element="tns:RetrieveResponse"/>
+  </wsdl:message>
 
-  <portType name="AddressCompleteSoap">
-    <operation name="Find">
-      <input message="tns:FindRequest"/>
-      <output message="tns:FindResponse"/>
-    </operation>
-    <operation name="Retrieve">
-      <input message="tns:RetrieveRequest"/>
-      <output message="tns:RetrieveResponse"/>
-    </operation>
-  </portType>
+  <wsdl:portType name="AddressCompleteSoap">
+    <wsdl:operation name="Find">
+      <wsdl:input message="tns:FindRequest"/>
+      <wsdl:output message="tns:FindResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="Retrieve">
+      <wsdl:input message="tns:RetrieveRequest"/>
+      <wsdl:output message="tns:RetrieveResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
 
-  <binding name="AddressCompleteSoapBinding" type="tns:AddressCompleteSoap">
+  <wsdl:binding name="AddressCompleteSoapBinding" type="tns:AddressCompleteSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-    <operation name="Find">
+    <wsdl:operation name="Find">
       <soap:operation soapAction="http://schemas.postcodeanywhere.com/Find"/>
-      <input>
+      <wsdl:input>
         <soap:body use="literal"/>
-      </input>
-      <output>
+      </wsdl:input>
+      <wsdl:output>
         <soap:body use="literal"/>
-      </output>
-    </operation>
-    <operation name="Retrieve">
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Retrieve">
       <soap:operation soapAction="http://schemas.postcodeanywhere.com/Retrieve"/>
-      <input>
+      <wsdl:input>
         <soap:body use="literal"/>
-      </input>
-      <output>
+      </wsdl:input>
+      <wsdl:output>
         <soap:body use="literal"/>
-      </output>
-    </operation>
-  </binding>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
 
-  <service name="AddressComplete">
-    <port name="AddressCompleteSoap" binding="tns:AddressCompleteSoapBinding">
+  <wsdl:service name="AddressComplete">
+    <wsdl:port name="AddressCompleteSoap" binding="tns:AddressCompleteSoapBinding">
       <soap:address location="https://can-post-proxy.onrender.com/addresscomplete/interactive/find/v2.10/soap12"/>
-    </port>
-  </service>
+    </wsdl:port>
+  </wsdl:service>
 
-</definitions>
+</wsdl:definitions>
