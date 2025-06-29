@@ -142,6 +142,7 @@ def proxy_infor_request():
     state = get("ProvinceName")
     postal = get("PostalCode")
     street_line = get("Line1")
+    country = get("Country")
 
     return jsonify({
         "ttblmessaging": [],
@@ -156,7 +157,7 @@ def proxy_infor_request():
             "state": state,
             "zipcd": postal,
             "zipcdext": "",
-            "country": "CA",
+            "country": country,
             "county": "",
             "addressoverfl": False,
             "geocd": 0,
