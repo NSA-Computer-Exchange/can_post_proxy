@@ -17,7 +17,7 @@ FIND_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
       <Key>{key}</Key>
       <SearchTerm>{term}</SearchTerm>
       <LanguagePreference>en</LanguagePreference>
-      <Country>CAN</Country>
+      <Country>{country}</Country>
       <MaxSuggestions>1</MaxSuggestions>
     </Find>
   </soap12:Body>
@@ -96,7 +96,9 @@ def proxy_infor_request():
     ]))
 
     search_term = f"{street}, {criteria.get('city', '')}, {criteria.get('state', '')} {criteria.get('zipcd', '')}"
-    soap_payload = FIND_TEMPLATE.format(key=API_KEY, term=search_term)
+    country_code = criteria.get("country", "CA").upper()
+
+    soap_payload = FIND_TEMPLATE.format(key=API_KEY, term=search_term, country=country_code)
     headers = {"Content-Type": "application/soap+xml; charset=utf-8"}
 
     # Step 1: Find
