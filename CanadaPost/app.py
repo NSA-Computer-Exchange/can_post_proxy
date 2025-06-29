@@ -142,7 +142,7 @@ def proxy_infor_request():
     state = get("ProvinceName")
     postal = get("PostalCode")
     street_line = get("Line1")
-    country = get("Country")
+    country = get("CountryName")
 
     return jsonify({
         "ttblmessaging": [],
