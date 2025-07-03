@@ -49,7 +49,7 @@ def serve_wsdl():
 # def serve_wsdl():
 #     return send_from_directory('static/wsdl', 'addresscomplete.wsdl', mimetype='text/xml')
 
-@app.route('/addresscomplete/interactive/find/v2.10/soap12', methods=['POST'])
+@app.route('/AddressComplete/Interactive/Find/v2.10/soap12.ws', methods=['POST'])
 def handle_find():
     response_xml = '''<?xml version="1.0" encoding="utf-8"?>
 <soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
@@ -64,7 +64,7 @@ def handle_find():
     return Response(response_xml, mimetype='application/soap+xml')
 
 
-@app.route('/addresscomplete/interactive/retrieve/v2.10/soap12', methods=['POST'])
+@app.route('/AddressComplete/Interactive/Retrieve/v2.11/soap12.ws', methods=['POST'])
 def handle_retrieve():
     response_xml = '''<?xml version="1.0" encoding="utf-8"?>
 <soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
@@ -79,7 +79,15 @@ def handle_retrieve():
   </soap12:Body>
 </soap12:Envelope>'''
     return Response(response_xml, mimetype='application/soap+xml')
+  
 
+@app.route('/AddressComplete/Interactive/Find/v2.10/wsdlnew.ws', methods=['GET'])
+def serve_wsdl_find():
+    return send_from_directory('static/wsdl', 'AddressComplete.wsdl', mimetype='text/xml')
+
+@app.route('/AddressComplete/Interactive/Retrieve/v2.11/wsdlnew.ws', methods=['GET'])
+def serve_wsdl_retrieve():
+    return send_from_directory('static/wsdl', 'AddressCompleteRetrieve.wsdl', mimetype='text/xml')
 
 
 @app.route('/proxy', methods=['POST'])
