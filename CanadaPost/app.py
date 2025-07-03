@@ -83,11 +83,11 @@ def handle_retrieve():
 
 @app.route('/AddressComplete/Interactive/Find/v2.10/wsdlnew.ws', methods=['GET'])
 def serve_wsdl_find():
-    return send_from_directory('static/wsdl', 'AddressComplete.wsdl', mimetype='text/xml')
+    return send_from_directory('static/wsdl', 'wsdlnew.ws', mimetype='text/xml')
 
 @app.route('/AddressComplete/Interactive/Retrieve/v2.11/wsdlnew.ws', methods=['GET'])
 def serve_wsdl_retrieve():
-    return send_from_directory('static/wsdl', 'AddressCompleteRetrieve.wsdl', mimetype='text/xml')
+    return send_from_directory('static/wsdl', 'wsdlnew.ws', mimetype='text/xml')
 
 
 @app.route('/proxy', methods=['POST'])
