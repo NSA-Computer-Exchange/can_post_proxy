@@ -54,14 +54,18 @@ def handle_find():
     response_xml = '''<?xml version="1.0" encoding="utf-8"?>
 <soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Body>
-    <FindResponse xmlns="http://schemas.postcodeanywhere.com/">
-      <Id>CA|CP|A|16236336</Id>
-      <Text>97 Rue Champlain</Text>
-      <Description>Les Cèdres, QC, J7T 0C6</Description>
-    </FindResponse>
+    <AddressComplete_Interactive_Find_v2_10_Result xmlns="http://ws1.postescanada-canadapost.ca/">
+      <AddressComplete_Interactive_Find_v2_10_Results>
+        <Id>CA|CP|A|16236336</Id>
+        <Text>97 Rue Champlain</Text>
+        <Description>Les Cèdres, QC, J7T 0C6</Description>
+        <Next>Retrieve</Next>
+      </AddressComplete_Interactive_Find_v2_10_Results>
+    </AddressComplete_Interactive_Find_v2_10_Result>
   </soap12:Body>
 </soap12:Envelope>'''
     return Response(response_xml, mimetype='application/soap+xml')
+
 
 
 @app.route('/AddressComplete/Interactive/Retrieve/v2.11/soap12.ws', methods=['POST'])
